@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import styled from 'styled-components'
+import { darken, lighten } from 'polished'
 
 export const Container = styled.div`
   padding: 30px;
@@ -110,4 +110,4 @@ export const Total = styled.div`
     font-size: 28px;
     margin-left: 5px;
   }
-`;
+`

@@ -1,23 +1,19 @@
-import {
-  MdDelete,
-  MdAddCircleOutline,
-  MdRemoveCircleOutline,
-} from 'react-icons/md';
+import { MdDelete, MdAddCircleOutline, MdRemoveCircleOutline } from 'react-icons/md'
 
-import { useCart } from '../../hooks/useCart';
-import { formatPrice } from '../../util/format';
-import { Container, ProductTable, Total } from './styles';
+import { useCart } from '../../hooks/useCart'
+import { formatPrice } from '../../util/format'
+import { Container, ProductTable, Total } from './styles'
 
 interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  amount: number;
+  id: number
+  title: string
+  price: number
+  image: string
+  amount: number
 }
 
 const Cart = (): JSX.Element => {
-  const { cart, removeProduct, updateProductAmount } = useCart();
+  const { cart, removeProduct, updateProductAmount } = useCart()
 
   const cartFormatted = cart.map(product => ({
     ...product,
@@ -35,11 +31,11 @@ const Cart = (): JSX.Element => {
     )
 
   function handleProductIncrement(product: Product) {
-    updateProductAmount({productId: product.id, amount: product.amount+=1})
+    updateProductAmount({productId: product.id, amount: product.amount += 1})
   }
 
   function handleProductDecrement(product: Product) {
-    updateProductAmount({productId: product.id, amount: product.amount-=1})
+    updateProductAmount({productId: product.id, amount: product.amount -= 1})
   }
 
   function handleRemoveProduct(productId: number) {
@@ -58,6 +54,7 @@ const Cart = (): JSX.Element => {
             <th aria-label="delete icon" />
           </tr>
         </thead>
+
         <tbody>
           {cartFormatted.map(product => (
             <tr data-testid="product" key={product.id}>
@@ -80,12 +77,14 @@ const Cart = (): JSX.Element => {
                   >
                     <MdRemoveCircleOutline size={20} />
                   </button>
+
                   <input
                     type="text"
                     data-testid="product-amount"
                     readOnly
                     value={product.amount}
                   />
+
                   <button
                     type="button"
                     data-testid="increment-product"
@@ -119,11 +118,12 @@ const Cart = (): JSX.Element => {
 
         <Total>
           <span>TOTAL</span>
+
           <strong>{total}</strong>
         </Total>
       </footer>
     </Container>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
